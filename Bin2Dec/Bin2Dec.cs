@@ -2,47 +2,109 @@ using System;
 using System.Text.RegularExpressions;
 class Program
 {
+    
+    /// <summary>
+    /// Funcion principal
+    /// </summary>
     static int Main()
     {
-        Console.WriteLine("Hola! Ingresa tu número binario: ");
-        string Binario = Console.ReadLine();
-        var dec = BinToDec(Binario);
-        Console.WriteLine($"El binario \"{Binario}\" en decimal es: {dec}");
-        // EXTRA
-        Console.WriteLine("Hola! Ingresa tu número decimal: ");
-        string Decimal = Console.ReadLine();
-        var bin = DecToBin(int.parse(Decimal));
-        Console.WriteLine($"El decimal \"{Decimal}\" en binario es: {bin}");
-    }
-    static int BinToDec(string Binario)
-    {
-        if (Binario != null && Regex.IsMatch(Binario, "^[01]+$"))
+        while (true)
         {
-            int Decimal = 0;
-            int longitud = Binario.Length;
-            for (int i = 0; i < longitud; i++)
+            switch (Menu())
             {
-                int num = int.Parse(Binario[longitud - i - 1].ToString());
-                Decimal += num * (int)Math.Pow(2, i);
+                case "1":
+                    Console.WriteLine("---------------");
+                    Console.Write("Hola! Ingresa tu numero binario: ");
+                    string binarioStr = Console.ReadLine();
+                    Console.WriteLine("---------------");
+                    if (Validar(binarioStr, 1) == false)
+                    {
+                        Console.WriteLine("El valor ingresado no es un binario de 8 bits\n");
+                        break;
+                    }
+                    var dec = BinToDec(binarioStr);
+                    Console.WriteLine($"El binario \"{binarioStr}\" en decimal es: {dec}\n");
+                    break;
+                case "2":
+                    Console.WriteLine("---------------");
+                    Console.Write("Hola! Ingresa tu numero decimal: ");
+                    string decimalStr = Console.ReadLine();
+                    Console.WriteLine("---------------");
+                    if (Validar(decimalStr, 2) == false)
+                    {
+                        Console.WriteLine("El valor ingresado no es un decimal\n");
+                        break;
+                    }
+                    var bin = DecToBin(decimalStr);
+                    Console.WriteLine($"El decimal \"{decimalStr}\" en binario es: {bin}\n");
+                    break;
+                case "3":
+                    return 0;
+                default:
+                    Console.WriteLine("---------------");
+                    Console.WriteLine("Opcion no valida. Intenta de nuevo.\n");
+                    break;
             }
-            return Decimal;
         }
-        else { return 0; }
     }
+    /// <summary>
+    /// Valida el input del usuario
+    /// </summary>
+    static bool Validar(string input, int type)
+    {
+        switch (type)
+        {
+            case 1:
+                return input != null && Regex.IsMatch(input, "^[01]+$") && input.Length <= 8;
+            case 2:
+                return int.TryParse(input, out int n) && n >= 0;
+            default:
+                break;
+        }
+        return false;
+    }
+    /// <summary>
+    /// Muestra el menú con las opciones disponibles
+    /// </summary>
+    static string Menu()
+    {
+        Console.WriteLine("--- Bin2Dec ---");
+        Console.WriteLine("1. Binario a Decimal");
+        Console.WriteLine("2. Decimal a Binario");
+        Console.WriteLine("3. Salir");
+        Console.WriteLine("---------------");
+        Console.Write("Elige una opcion: ");
+        string opcion = Console.ReadLine();
+        return opcion;
+    }
+    /// <summary>
+    /// Convierte un binario a decimal
+    /// </summary>
+    static int BinToDec(string binarioStr)
+    {
+        int Decimal = 0;
+        int longitud = binarioStr.Length;
+        for (int i = 0; i < longitud; i++)
+        {
+            int num = int.Parse(binarioStr[longitud - i - 1].ToString());
+            Decimal += num * (int)Math.Pow(2, i);
+        }
+        return Decimal;
+    }
+    /// <summary>
+    /// Convierte un decimal a binario
+    /// </summary>
     static string DecToBin(string numeroDecimalStr)
     {
-        if (int.TryParse(numeroDecimalStr, out int numeroDecimal))
+        int numeroDecimal = int.Parse(numeroDecimalStr);
+        if (numeroDecimal == 0) return "0";
+        string binario = "";
+        while (numeroDecimal > 0)
         {
-            if (numeroDecimal == 0) return "0";
-            string binario = "";
-            while (numeroDecimal > 0)
-            {
-                binario = (numeroDecimal % 2) + binario;
-                numeroDecimal /= 2;
-            }
-            return binario;
+            binario = (numeroDecimal % 2) + binario;
+            numeroDecimal /= 2;
         }
-        else { return ""; }
+        return binario;
     }
 
 }
