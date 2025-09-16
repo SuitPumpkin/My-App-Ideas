@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         AllowsTransparency="True"
         WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        Title="Calculadora" Height="364" Width="300">
+        Title="Calculadora" Height="364" Width="535" Loaded="WindowLoaded">
     <Grid MouseLeftButtonDown="OnClickInWindow">
         <Grid.Resources>
             <Style x:Key="BaseButton" TargetType="Button">
@@ -73,7 +74,7 @@
             </Style>
         </Grid.Resources>
         <!--Calculadora-->
-        <Border x:Name="Body" Width="300">
+        <Border x:Name="Body" HorizontalAlignment="Left" Width="270">
             <Border.Effect>
                 <DropShadowEffect Color="Black" Direction="-60" ShadowDepth="8" Opacity="0.42" BlurRadius="10"/>
             </Border.Effect>
@@ -123,7 +124,25 @@
                     <TextBlock x:Name="Display" FontSize="52" Height="60" TextAlignment="Right" Background="Transparent" Text="0" FontWeight="Bold" Margin="35,10,40,0"/>
                 </StackPanel>
                 <!--BotónCerrar-->
-                <Button Style="{StaticResource Cerrado}" Content="x" FontWeight="Bold" FontSize="10" Click="OnCloseClick" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,7.5,25,0" Padding="0,-2.5,0,0" Foreground="Black"/>
+                <Button Style="{StaticResource Cerrado}" Content="x" FontWeight="Bold" FontSize="10" Click="OnCloseClick" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,7.5,12.5,0" Padding="0,-2.5,0,0" Foreground="Black"/>
+            </Grid>
+        </Border>
+        <!--Tapa-->
+        <Border x:Name="Cover" HorizontalAlignment="Left" Width="280" RenderTransformOrigin="0.5,0.5" Margin="270,0,0,0">
+            <Border.Background>
+                <ImageBrush ImageSource="{DynamicResource SecondaryBody}" Stretch="Uniform"/>
+            </Border.Background>
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="ScaleCover" ScaleX="-1" />
+                    <TranslateTransform x:Name="TranslateCover" X="-280"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Grid RenderTransformOrigin="0.5,0.5" x:Name="Credits">
+                <Image Source="{DynamicResource Credits}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Grid.RenderTransform>
+                    <ScaleTransform ScaleX="-1" />
+                </Grid.RenderTransform>
             </Grid>
         </Border>
     </Grid>

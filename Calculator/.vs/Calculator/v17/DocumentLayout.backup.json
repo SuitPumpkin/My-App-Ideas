@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Mis Programas\\My App Ideas\\Calculator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|d:\\mis programas\\my app ideas\\calculator\\calculator\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|D:\\Mis Programas\\My App Ideas\\Calculator\\calculator\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|solutionrelative:calculator\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|D:\\Mis Programas\\My App Ideas\\Calculator\\calculator\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|solutionrelative:calculator\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|d:\\mis programas\\my app ideas\\calculator\\calculator\\recursos\\dictionary1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|solutionrelative:calculator\\recursos\\dictionary1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|d:\\mis programas\\my app ideas\\calculator\\calculator\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9F53854-55D6-4EF8-8DF8-F6F86D5F8DF7}|Calculator\\Calculator.csproj|solutionrelative:calculator\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Dictionary1.xaml",
               "DocumentMoniker": "D:\\Mis Programas\\My App Ideas\\Calculator\\Calculator\\Recursos\\Dictionary1.xaml",
               "RelativeDocumentMoniker": "Calculator\\Recursos\\Dictionary1.xaml",
@@ -38,20 +38,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Mis Programas\\My App Ideas\\Calculator\\Calculator\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Calculator\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Mis Programas\\My App Ideas\\Calculator\\Calculator\\MainWindow.xaml.cs",
               "RelativeToolTip": "Calculator\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAkwBgAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAA9wFgAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T23:29:42.569Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Mis Programas\\My App Ideas\\Calculator\\Calculator\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Calculator\\MainWindow.xaml",
