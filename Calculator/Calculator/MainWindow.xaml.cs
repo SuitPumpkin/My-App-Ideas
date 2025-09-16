@@ -24,10 +24,11 @@ namespace Calculator
         {
             InitializeComponent();
         }
-        private void OnNumberClick(object sender, RoutedEventArgs e)
+        private void OnButtonClick(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            if (Display.Text == "0" || Display.Text == "Error")
+
+            if (Display.Text == "0")
             {
                 Display.Text = button.Content.ToString();
             }
@@ -36,27 +37,43 @@ namespace Calculator
                 Display.Text += button.Content.ToString();
             }
         }
-        private void OnOperatorClick(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            Display.Text += button.Content.ToString();
-        }
         private void OnClearClick(object sender, RoutedEventArgs e)
         {
             Display.Text = "0";
+            MiniDisplay.Text = "0";
         }
         private void OnEqualClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                //cambiar esto por una funcion propia que compute
-                var result = new System.Data.DataTable().Compute(Display.Text, null);
-                Display.Text = result.ToString();
+                MiniDisplay.Text = Display.Text;
+                Display.Text = Calculate(Display.Text);
             }
             catch (Exception)
             {
-                Display.Text = "Error";
+                Display.Text = "0";
+                MiniDisplay.Text = "Error";
             }
+        }
+        private string Calculate(string expression)
+        {
+            //Validaciones de los botones
+            expression = expression.Replace("x", "*").Replace("÷", "/");
+
+            //cambiar esto por una funcion propia que compute
+            var result = new System.Data.DataTable().Compute(expression, null);
+            return result.ToString();
+        }
+        private void OnClickInWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+        private void OnCloseClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

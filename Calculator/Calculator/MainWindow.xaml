@@ -5,31 +5,126 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Background="DimGray"
-        Title="Calculadora" Height="250" Width="300">
-    <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock x:Name="Display" FontSize="52" Height="80" 
-                       TextAlignment="Right" VerticalAlignment="Center" 
-                       Margin="10" Background="White" Text="0" FontWeight="Bold"/>
-            <UniformGrid Rows="5" Columns="4" Margin="10">
-                <Button Content="7" Click="OnNumberClick"/>
-                <Button Content="8" Click="OnNumberClick"/>
-                <Button Content="9" Click="OnNumberClick"/>
-                <Button Content="/" Click="OnOperatorClick"/>
-                <Button Content="4" Click="OnNumberClick"/>
-                <Button Content="5" Click="OnNumberClick"/>
-                <Button Content="6" Click="OnNumberClick"/>
-                <Button Content="*" Click="OnOperatorClick"/>
-                <Button Content="1" Click="OnNumberClick"/>
-                <Button Content="2" Click="OnNumberClick"/>
-                <Button Content="3" Click="OnNumberClick"/>
-                <Button Content="-" Click="OnOperatorClick"/>
-                <Button Content="0" Click="OnNumberClick"/>
-                <Button Content="C" Click="OnClearClick"/>
-                <Button Content="=" Click="OnEqualClick"/>
-                <Button Content="+" Click="OnOperatorClick"/>
-            </UniformGrid>
-        </StackPanel>
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        Title="Calculadora" Height="364" Width="300">
+    <Grid MouseLeftButtonDown="OnClickInWindow">
+        <Grid.Resources>
+            <Style x:Key="BaseButton" TargetType="Button">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Margin" Value="1"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="Black" Direction="-60" ShadowDepth="4" Opacity="0.5" BlurRadius="0"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" SnapsToDevicePixels="True">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Effect" Value="{x:Null}"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="False">
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="#262626" Direction="-40" ShadowDepth="3" Opacity="0.8" BlurRadius="0"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="Small" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="{DynamicResource KeySmall}" Stretch="Uniform"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="Medium" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="{DynamicResource KeyMedium}" Stretch="Uniform"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="Large" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="{DynamicResource KeyLarge}" Stretch="Uniform"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="Cerrado" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="{DynamicResource Close}" Stretch="Uniform"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <!--Calculadora-->
+        <Border x:Name="Body" Width="300">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Direction="-60" ShadowDepth="8" Opacity="0.42" BlurRadius="10"/>
+            </Border.Effect>
+            <Border.Background>
+                <ImageBrush ImageSource="{DynamicResource MainBody}" Stretch="Uniform"/>
+            </Border.Background>
+            <Grid>
+                <!--Botones-->
+                <Grid Width="213" Height="182" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,110,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="7" Style="{StaticResource Small}" Grid.Column="0" Grid.Row="0"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="8" Style="{StaticResource Small}" Grid.Column="1" Grid.Row="0"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="9" Style="{StaticResource Small}" Grid.Column="2" Grid.Row="0"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="x" Style="{StaticResource Small}" Grid.Column="3" Grid.Row="0"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="÷" Style="{StaticResource Small}" Grid.Column="5" Grid.Row="0"/>
+
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="4" Style="{StaticResource Small}" Grid.Column="0" Grid.Row="1"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="5" Style="{StaticResource Small}" Grid.Column="1" Grid.Row="1"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="6" Style="{StaticResource Small}" Grid.Column="2" Grid.Row="1"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="+" Style="{StaticResource Small}" Grid.Column="3" Grid.Row="1"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="-" Style="{StaticResource Small}" Grid.Column="5" Grid.Row="1"/>
+
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="1" Style="{StaticResource Small}" Grid.Column="0" Grid.Row="2"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="2" Style="{StaticResource Small}" Grid.Column="1" Grid.Row="2"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="3" Style="{StaticResource Small}" Grid.Column="2" Grid.Row="2"/>
+                    <Button Click="OnClearClick" FontWeight="Bold" FontSize="20" Content="C" Style="{StaticResource Medium}" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="0" Style="{StaticResource Small}" Grid.Column="0" Grid.Row="3"/>
+                    <Button Click="OnButtonClick" FontWeight="Bold" FontSize="20" Content="." Style="{StaticResource Small}" Grid.Column="1" Grid.Row="3"/>
+                    <Button Click="OnEqualClick" FontWeight="Bold" FontSize="30" Content="=" Style="{StaticResource Large}" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"/>
+                </Grid>
+                <!--Pantallas-->
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" >
+                    <TextBlock x:Name="MiniDisplay" FontSize="20" Height="30" TextAlignment="Right" Background="Transparent" Text="0" FontWeight="Bold" Margin="75,22.5,40,-2.5"/>
+                    <TextBlock x:Name="Display" FontSize="52" Height="60" TextAlignment="Right" Background="Transparent" Text="0" FontWeight="Bold" Margin="35,10,40,0"/>
+                </StackPanel>
+                <!--BotónCerrar-->
+                <Button Style="{StaticResource Cerrado}" Content="x" FontWeight="Bold" FontSize="10" Click="OnCloseClick" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,7.5,25,0" Padding="0,-2.5,0,0" Foreground="Black"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

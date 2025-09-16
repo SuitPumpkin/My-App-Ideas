@@ -14,3 +14,5 @@ D:\Mis Programas\My App Ideas\Calculator\Calculator\obj\Debug\Calculator.csproj.
 D:\Mis Programas\My App Ideas\Calculator\Calculator\obj\Debug\Calculator.exe
 D:\Mis Programas\My App Ideas\Calculator\Calculator\obj\Debug\Calculator.pdb
 D:\Mis Programas\My App Ideas\Calculator\Calculator\obj\Debug\Calculator.exe.config
+D:\Mis Programas\My App Ideas\Calculator\Calculator\obj\Debug\Recursos\Dictionary1.baml
+D:\Mis Programas\My App Ideas\Calculator\Calculator\obj\Debug\App.baml
